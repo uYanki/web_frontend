@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* 高度 */
+  height: 100vh; /* 100%高度 */
+  /* 居中 */
+  display: flex; /* 弹性盒子模型 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  /* 背景颜色 */
+  background-color: wheat;
+}
+
+.container {
+  /* 居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 垂直排列元素(仅次级元素) */
+  flex-direction: column;
+  width: 250px;
+  height: 400px;
+  /* 圆角 */
+  border-radius: 5px;
+  /* 盒子阴影 */
+  /* param: x-offset y-offset blur-radius spread-radius color */
+  box-shadow: 0px 0px 5px red;
+  /* 背景颜色 */
+  background-color: whitesmoke;
+  /* 溢出隐藏(隐藏元素超出边框的部分) */
+  overflow: hidden;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+.container form {
+  width: 200px;
+  height: 160px;
+  /* 居中且垂直排列 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 每个元素周围分配相同空间 */
+  justify-content: space-around;
+  /* 层叠显示 */
+  /* 因为后续动画会插入新的元素,不设置为顶层的话,该元素会被覆盖 */
+  z-index: 1;
+}
+
+.container form .tbx {
+  width: 180px;
+  height: 30px;
+  /* 通常状态下无边框 */
+  border: none;
+  /* 焦点状态下无边框 */
+  /* outline: none; */
+  /* 字体大小 */
+  font-size: 14px;
+
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.container form .tbx::placeholder {
+  color: grey;
+}
+
+.container form .sub {
+  width: 180px;
+  height: 30px;
+  margin-top: 20px;
+  background: none;
+  border: 1px solid salmon;
+  /* 字符颜色 */
+  color: salmon;
+  /* 字符加粗 */
+  font-weight: bold;
+  /* 字符间距 */
+  letter-spacing: 2px;
+  /* 焦点光标 */
+  cursor: pointer;
+}
+
+.container h1 {
+  color: black;
+  font-size: 30px;
+  letter-spacing: 3px;
+  font-weight: bolder;
+  margin-bottom: 20px;
+  /* 文字阴影 */
+  text-shadow: 1px 1px 1px rgba(33, 45, 58, 0.2);
+  /* 层叠显示 */
+  z-index: 1;
+}
+
+/******* 进出动画 *******/
+
+.container .in {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  transform: translate(-50%, -50%);
+  animation: in 0.3s ease-out forwards;
+}
+
+.container .out {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: block;
+  width: 1200px;
+  height: 1200px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: out 0.3s ease-out forwards;
+}
+
+@keyframes in {
+  /* 初始关键帧 */
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  /* 结束关键帧 */
+  100% {
+    width: 1200px;
+    height: 1200px;
+  }
+}
+
+@keyframes out {
+  /* 初始关键帧 */
+  0% {
+    width: 1200px;
+    height: 1200px;
+  }
+  /* 结束关键帧 */
+  100% {
+    width: 0px;
+    height: 0px;
+  }
+}

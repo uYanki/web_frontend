@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form action="">
+            <input type="text" class="tbx" placeholder="account">
+            <input type="password" class="tbx" placeholder="password">
+            <input type="submit" class="sub" value="login">
+        </form>
+    </div>
+    <script>
+        // 元素绑定
+        const con = document.querySelector('.container');
+        // 定义变量
+        let bIn = true
+        let bOut = false;
+        // 添加监听
+        var span;
+        // 鼠标进入
+        con.addEventListener('mouseenter', (e) => {
+            if (bIn) {
+                // 获取鼠标位置
+                let inX = e.clientX - e.target.offsetLeft;
+                let inY = e.clientY - e.target.offsetTop;
+                // 新建子元素
+                let el = document.createElement('span');
+                el.style.left = inX + 'px';
+                el.style.top = inY + 'px';
+                con.appendChild(el)
+                // 设置动画
+                $('.container span').removeClass('out')
+                $('.container span').addClass('in')
+
+                span = document.querySelector('.container span');
+
+                bIn = false;
+                bOut = true;
+            }
+        })
+        // 鼠标移出
+        con.addEventListener('mouseleave', (e) => {
+            if (bOut) {
+                // 获取鼠标位置
+                let outX = e.clientX - e.target.offsetLeft;
+                let outY = e.clientY - e.target.offsetTop;
+
+                $('.container span').removeClass('in')
+                $('.container span').addClass('out')
+
+                $('.out').css('left', outX + 'px');
+                $('.out').css('top', outY + 'px');
+
+                bOut = false;
+
+                setTimeout(() => {
+                    con.removeChild(span);
+                    bIn = true;
+                }, 300)//300ms (根据自己的动画时间来调整)
+
+            }
+        })
+    </script>
+</body>
+
+</html>
