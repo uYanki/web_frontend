@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  /* 居中对其 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 背景渐变色 */
+  background-image: linear-gradient(200deg, #5ee7df, #b490ca);
+  /* 透视距离 (观察者与Z平面的距离) */
+  perspective: 800px;
+}
+
+.card {
+  width: 200px;
+  height: 300px;
+  border-radius: 5px;
+  position: relative;
+  /* 阴影色 */
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+  /* 设置光标 */
+  cursor: pointer;
+  /* 旋转方式为3D旋转 */
+  transform-style: preserve-3d;
+  /* 设置默认旋转动画 */
+  transition: 1s ease-in-out;
+  /* 溢出隐藏 */
+  /* overflow: hidden; */
+  /* 这里用溢出隐藏会导致背面不显示, 不知道为什么,所以这里用圆角继承代替了 */
+}
+
+.card:hover {
+  transform: rotateY(0.5turn);
+}
+
+.front,
+.back {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: inherit;
+  background: whitesmoke;
+  /* 隐藏背面(对象有正反,绕y旋转180就隐藏掉了) */
+  backface-visibility: hidden;
+  /* 居中且垂直排列 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 每个元素周围分配相同空间 */
+  justify-content: space-around;
+}
+
+.back {
+  /* 默认旋转180度, 配合backface-visibility实现不可视效果*/
+  transform: rotateY(0.5turn);
+}
