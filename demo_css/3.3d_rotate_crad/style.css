@@ -5,7 +5,7 @@
 
 body {
   height: 100vh;
-  /* 居中对其 */
+  /* 居中对齐 */
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  /* 居中对齐 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 背景渐变色 */
+  background-image: linear-gradient(to bottom, #5ee7df, #d7bde8);
+}
+
+ul {
+  position: relative;
+  display: flex;
+}
+
+ul li {
+  position: relative;
+  list-style: none;
+  margin: 10px;
+}
+
+ul li a {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  color: #ffff;
+  border-radius: 5px;
+  border: 1pxsolid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  /*
+  https://www.cnblogs.com/xiaonian8/p/14010381.html
+  inline: 元素同行,不可设置 宽高 行高 顶底边距 
+  block:元素不同行,可设置 宽高 行高 顶底边距 
+  inline-block: 元素同行,可设置 宽高 行高 顶底边距
+  */
+
+  display: inline-block;
+  /* 居中 */
+  display: flex;
+  /* 这个flex需写在inline-block之后,否则不居中了 */
+  justify-content: center;
+  align-items: center;
+  /* 背景模糊 */
+  backdrop-filter: blur(2px);
+  /* 动画执行时间 */
+  transition: all 0.3s;
+
+  overflow: hidden;
+}
+
+/* 向上平移动画 */
+ul li a:hover {
+  transform: translateY(-10px);
+}
+
+ul li a::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 30%;
+  height: 100%;
+  background-color: white;
+  /* 横切和平移 */
+  transform: skewX(45deg) translateX(100px);
+  /* 动画时间 */
+  transition: all 0.5s;
+}
+
+/* 闪光动画 */
+ul li a:hover::before {
+  transform: skewX(45deg) translateX(-100px);
+}
+
+/* 
+一个冒号指伪类,两个冒号指伪元素 
+https://blog.csdn.net/u014527697/article/details/81087139
+*/
