@@ -1,0 +1,84 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    /* 居中对齐 */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 渐变色背景 */
+    background: linear-gradient(200deg, #0c3483, #a2b6df);
+}
+
+.wrapper {
+    width: 300px;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.wrapper .input-data {
+    width: 100%;
+    height: 30px;
+    /* 相对定位 */
+    position: relative;
+}
+
+.wrapper .input-data input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 14px;
+    border-bottom: 2px solid #c0c0c0;
+    /* 取得焦点时无默认边框 */
+    outline: none;
+}
+
+
+.wrapper .input-data label {
+    position: absolute;
+    bottom: 8px;
+    left: 0px;
+    color: #888888;
+    /* 鼠标穿透 */
+    pointer-events: none;
+    /* 变换参数(平移、旋转等) */
+    transition: all 0.3s ease;
+}
+
+.wrapper .input-data .underline {
+    position: absolute;
+    bottom: 0px;
+    height: 2px;
+    width: 100%;
+    background-color: #2c6fdb;
+    /* 下划线伸缩效果 */
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+}
+
+/* 兄弟选择器: 
+'+': 某元素后相邻的兄弟元素(单个)
+'~': 某元素后所有同级的指定元素(多个)
+https://www.cnblogs.com/jf-67/p/8987341.html
+*/
+
+/* 输入框获得焦点时 */
+.wrapper .input-data input:focus~label,
+/* 输入框的值合法时 */
+.wrapper .input-data input:valid~label {
+    /* 标签上移动,改变字号,颜色 */
+    transform: translateY(-20px);
+    font-size: 10px;
+    color: #2c6fdb;
+}
+
+.wrapper .input-data input:focus~.underline,
+.wrapper .input-data input:valid~.underline {
+    transform: scaleX(1);
+}
