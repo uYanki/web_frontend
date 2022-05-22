@@ -2,6 +2,21 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    /* 这部主要是让 underline 与 input 的下边框重合 */
+
+    /*
+    element size = padding + border + content
+
+    box-sizing: content-box (default)
+    - width、height 设置的是 content 的 width、height
+      eg: width=height=20,padding=10 -> element width=height=40, content width=height=20
+        
+    box-sizing: border-box
+    - width、height 设置的是 element 的 width、height, 
+        并根据 padding 调整 content 的 width、height
+        eg: width=height=40, padding=10, element width=height=40, content width=height=20
+    */
+
 }
 
 body {
@@ -53,9 +68,11 @@ body {
 
 .wrapper .input-data .underline {
     position: absolute;
-    bottom: 0px;
-    height: 2px;
     width: 100%;
+    /* 与输入框下边框等高 */
+    height: 2px;
+    /* 这里用的是 bottom, 让其与输入框的下边框的顶边重合 */
+    bottom: 0px;
     background-color: #2c6fdb;
     /* 下划线伸缩效果 */
     transform: scaleX(0);

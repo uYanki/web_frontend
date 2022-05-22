@@ -1,0 +1,113 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    height: 100vh;
+    /* 渐变色背景 */
+    background: linear-gradient(200deg, #ddd6f3, #faaca8);
+}
+
+body,
+.navbar,
+.navbar ul {
+    /* 居中对齐 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar {
+    position: relative;
+    padding: 10px;
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+.navbar input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    /* 复选框透明 */
+    opacity: 0;
+}
+
+.navbar span {
+    position: absolute;
+    left: 10px;
+    width: 20px;
+    height: 2px;
+    background-color: rgb(184, 179, 179);
+    border-radius: 3px;
+    /* 
+    background 可以设置 背景颜色、背景图片、定位等 
+    background-color 只能设置 背景颜色 
+    */
+
+    /* 设置 span 无鼠标事件, 类似鼠标穿透, 即点击 span 时, 就是在点击 checkbox */
+    pointer-events: none;
+
+    transition: top 0.3s ease-in-out 0.3s;
+
+}
+
+/* 第1根线 span, 为父元素的第2个元素  */
+.navbar :nth-child(2) {
+    top: calc(50% - 4px);
+}
+
+/* 第2根线 span, 为父元素的第2个元素  */
+.navbar :nth-child(3) {
+    top: calc(50% + 4px);
+}
+
+.navbar ul {
+    width: 0px;
+    list-style: none;
+    transition: all 0.5s;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    /* 文字不换行 */
+    white-space: nowrap;
+}
+
+
+.navbar ul li {
+    list-style: none;
+    margin: 0px 5px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    /* 加粗 */
+    font-weight: 700px;
+}
+
+.navbar ul li a:hover {
+    color: #fb7299;
+}
+
+
+/* 兄弟选择器 ~, 查找同级 ul */
+.navbar input:checked~ul {
+    width: 200px;
+}
+
+
+.navbar input:checked~:nth-child(2) {
+    top: 50%;
+    transform: rotate(-45deg);
+    background-color: #fb7299;
+    transition: top 0.3s ease-in-out;
+}
+
+
+.navbar input:checked~:nth-child(3) {
+    top: 50%;
+    transform: rotate(45deg);
+    background-color: #fb7299;
+    transition: top 0.3s ease-in-out;
+}
